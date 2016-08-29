@@ -41,7 +41,6 @@ var Game = function(boardString='0000000000000000') {
 };
 
 function spawnBlock(board, numBlocks=1) {
-  console.log("spawning "+ numBlocks + " block")
   var count = 0;
   while (count < numBlocks) {
     row = Math.floor(Math.random() * 4);
@@ -66,7 +65,6 @@ function generateNewBoard(boardString) {
     var count = 0;
     for(var x = 0; x < 4; x++) {
       for (var y = 0; y < 4; y++) {
-        console.log(count);
         board[x][y] = parseInt(boardString[count]);
         count++;
       }

@@ -107,3 +107,12 @@ td {
   background: #edc22e;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
 }
+
+.animated.bounceIn {
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+}
+.animated.bounceIn.slow {
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+}
