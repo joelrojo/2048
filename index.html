@@ -10,7 +10,10 @@
   <!--
     application.css is where you put your styles
   -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/application.css">
+
 
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="js/mousetrap.js"></script>
@@ -21,7 +24,12 @@
   <title>256!</title>
 </head>
 <body>
-
+  <h1>2048 Clone</h1>
+  <div class="controls">
+    <span class="label">Score: <span id="score">0</span></span>
+    <span class="label">Moves: <span id="moves">0</span></span>
+    <button id="restart"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+  </div>
   <div class="game-board">
     <table>
       <tr><td id="0"></td><td id='1'></td><td id='2'></td><td id='3'></td></tr>
@@ -29,7 +37,6 @@
       <tr><td id="8"></td><td id='9'></td><td id='10'></td><td id='11'></td></tr>
       <tr><td id="12"></td><td id='13'></td><td id='14'></td><td id='15'></td></tr>
     </table>
-    
   </div>
 
 </body>

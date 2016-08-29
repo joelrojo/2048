@@ -1,3 +1,39 @@
+body {
+  background: #faf8ef;
+  font-family: 'Source Code Pro', monospace;
+}
+
+h1, h2 {
+  text-align: center;
+  color:#666;
+}
+
+.controls {
+  margin: 0 auto;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 3px 10px;
+  text-decoration: none;
+  color: #f9f6f2;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  float: right;
+  border-style: none;
+}
+button:hover {
+  background: #bbada0;
+}
+button:focus { outline: none;}
+.label {
+  margin-right: 10px;
+  border-radius: 5px;
+}
 .game-board {
   margin: 0 auto;
   padding: 10px;

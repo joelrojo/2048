@@ -25,6 +25,11 @@ $(document).ready(function() {
     }
     render(game.toArray());
   });
+
+  $("#restart").click(function(event){
+    game = new Game();
+    render(game.toArray());
+  })
 });
 
 var render = function(array) {
