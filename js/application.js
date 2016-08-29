@@ -1,11 +1,36 @@
-var render = function(string) {
-  $(".game-board").append(string.substring(0, 4) + "<br />");
-  $(".game-board").append(string.substring(4, 8) + "<br />");
-  $(".game-board").append(string.substring(8, 12) + "<br />");
-  $(".game-board").append(string.substring(12, 16) + "<br />");
-} 
-
+var game;
 $(document).ready(function() {
-  var game = new Game();
-  render(game.toString());
+  game = new Game();
+  render(game.toArray());
+  console.log(game.board);
+  console.log(game.toString());
+
+  $('html').on('keyup', function(event) {
+    switch (event.keyCode) {
+      case 37:
+        game.move('left');
+        break;
+
+      case 38:
+        game.move('up');
+        break;
+
+      case 39:
+        game.move('right');
+        break;
+
+      case 40:
+        game.move('down');
+        break;
+    }
+    render(game.toArray());
+  });
 });
+
+var render = function(array) {
+  for (var i = 0; i < 16; i++) {
+    var block = $('#' + i);
+    block.html(array[i]);
+    block.attr('val', array[i]);
+  }
+} 
