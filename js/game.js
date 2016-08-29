@@ -1,5 +1,6 @@
 var Game = function(boardString='0000000000000000') {
   this.board = generateNewBoard(boardString);
+  this.moves = 0;
 
   this.toArray = function() {
     array = this.board[0].join(",") + "," + this.board[1].join(",") + "," + this.board[2].join(",") + "," + this.board[3].join(",");
@@ -37,6 +38,7 @@ var Game = function(boardString='0000000000000000') {
         break;
     }
     this.board = spawnBlock(this.board)
+    this.moves++;
   }
 };
 

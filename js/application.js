@@ -1,7 +1,7 @@
 var game;
 $(document).ready(function() {
   game = new Game();
-  render(game.toArray());
+  render(game, true);
   $('#game-table').animateCss('bounceIn');
   console.log(game.toString());
 
@@ -27,17 +27,17 @@ $(document).ready(function() {
         game.move('down');
         break;
     }
-    render(game.toArray());
+    render(game);
   });
 
   $("#restart").click(function(event){
     game = new Game();
-    render(game.toArray());
-    $('#game-table').animateCss('bounceIn');
+    render(game, true);
   });
 });
 
-var render = function(array) {
+var render = function(game, animate=false) {
+  var array = game.toArray()
   for (var i = 0; i < 16; i++) {
     var block = $('#' + i);
     block.html(array[i]);
@@ -45,6 +45,10 @@ var render = function(array) {
     if (array[i] != 0) {
       block.animateCss('bounceIn');
     }
+  }
+  $("#moves").html(game.moves);
+  if (animate) {
+    $('#game-table').animateCss('bounceIn');
   }
 } 
 
