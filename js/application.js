@@ -1,18 +1,16 @@
 var game;
-$(document).ready(function() {
+$(document).ready(function() { // can also write it $(function(){ code here })
   if (!localStorage.length) {
-    console.log("no localstorage")
     game = new Game();
     populateLocalStorage(game);
   } else {
-    console.log("local exists")
-    game = new Game(localStorage.board.split(","));
-    console.log(game);
+    console.log("localstorage available");
+    console.log(localStorage);
+    game = new Game(localStorage.board.split(",").map(Number));
     game.moves = parseInt(localStorage.getItem('moves'));
     game.score = parseInt(localStorage.getItem('score'));
   }
   render(localStorage, true);
-  console.log(game.toString());
 
   $('html').on('keyup', function(event) {
     switch (event.keyCode) {
