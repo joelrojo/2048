@@ -14,27 +14,19 @@ var Game = function(boardString='0000000000000000') {
   this.move = function(direction) {
     switch (direction) {
       case "up":
-        for (var i = 0; i < this.board.length; i++) {
-          this.board = resolveColUp(i, this.board);
-        }
+        this.board = resolveColUp(this.board);
         break;
 
       case "down":
-        for (var i = 0; i < this.board.length; i++) {
-          this.board = resolveColDown(i, this.board);
-        }
+        this.board = resolveColDown(this.board);
         break;
 
       case "left":
-        for (var i = 0; i < this.board.length; i++) {
-          this.board = resolveRowLeft(i, this.board);
-        }
+        this.board = resolveRowLeft(this.board);
         break;
 
       case "right":
-        for (var i = 0; i < this.board.length; i++) {
-          this.board = resolveRowRight(i, this.board);
-        }
+        this.board = resolveRowRight(this.board);
         break;
     }
     this.board = spawnBlock(this.board)
@@ -77,64 +69,72 @@ function generateNewBoard(boardString) {
   return board;
 }
 
-function resolveColUp(col, board) {
-  for (var j = 0; j < 3; j++) { // run each column 3 times
-    for (var i = 0; i < 3; i++) { // iterate through column
-      if (board[i][col] == 0) {
-        board[i][col] = board[i][col] + board[i + 1][col];
-        board[i + 1][col] = 0;
-      } else if (board[i][col] == board[i + 1][col] && board[i][col] != 0) {
-        board[i][col] = board[i][col] + board[i + 1][col];
-        board[i + 1][col] = 0;
-        j++;
+function resolveColUp(board) {
+  for (var col = 0; col < board.length; col++) { // run for each column
+    for (var j = 0; j < 3; j++) { // run each column 3 times
+      for (var i = 0; i < 3; i++) { // iterate through column
+        if (board[i][col] == 0) {
+          board[i][col] = board[i][col] + board[i + 1][col];
+          board[i + 1][col] = 0;
+        } else if (board[i][col] == board[i + 1][col] && board[i][col] != 0) {
+          board[i][col] = board[i][col] + board[i + 1][col];
+          board[i + 1][col] = 0;
+          j++;
+        }
       }
     }
   }
   return board;
 }
 
-function resolveColDown(col, board) {
-  for (var j = 0; j < 3; j++) { // 3 times per column
-    for (var i = 3; i > 0; i--) { //iterate through column from bottom up
-      if (board[i][col] == 0) {
-        board[i][col] = board[i][col] + board[i - 1][col];
-        board[i - 1][col] = 0;
-      } else if (board[i][col] == board[i - 1][col] && board[i][col] != 0) {
-        board[i][col] = board[i][col] + board[i - 1][col];
-        board[i - 1][col] = 0;
-        j++;
+function resolveColDown(board) {
+  for (var col = 0; col < board.length; col++) {
+    for (var j = 0; j < 3; j++) { // 3 times per column
+      for (var i = 3; i > 0; i--) { //iterate through column from bottom up
+        if (board[i][col] == 0) {
+          board[i][col] = board[i][col] + board[i - 1][col];
+          board[i - 1][col] = 0;
+        } else if (board[i][col] == board[i - 1][col] && board[i][col] != 0) {
+          board[i][col] = board[i][col] + board[i - 1][col];
+          board[i - 1][col] = 0;
+          j++;
+        }
       }
     }
   }
   return board;
 }
 
-function resolveRowLeft(row, board) {
-  for (var j = 0; j < 3; j++) {
-    for (var i = 0; i < 3; i++) {
-      if (board[row][i] == 0) {
-        board[row][i] = board[row][i] + board[row][i + 1];
-        board[row][i + 1] = 0;
-      } else if (board[row][i] == board[row][i + 1] && board[row][i] != 0) {
-        board[row][i] = board[row][i] + board[row][i + 1];
-        board[row][i + 1] = 0;
-        j++;
+function resolveRowLeft(board) {
+  for (var row = 0; row < board.length; row++) {
+    for (var j = 0; j < 3; j++) {
+      for (var i = 0; i < 3; i++) {
+        if (board[row][i] == 0) {
+          board[row][i] = board[row][i] + board[row][i + 1];
+          board[row][i + 1] = 0;
+        } else if (board[row][i] == board[row][i + 1] && board[row][i] != 0) {
+          board[row][i] = board[row][i] + board[row][i + 1];
+          board[row][i + 1] = 0;
+          j++;
+        }
       }
     }
   }
   return board;
 }
 
-function resolveRowRight(row, board) {
-  for (var j = 0; j < 3; j++) {
-    for (var i = 3; i > 0; i--) {
-      if (board[row][i] == 0) {
-        board[row][i] = board[row][i] + board[row][i - 1];
-        board[row][i - 1] = 0;
-      } else if (board[row][i] == board[row][i - 1] && board[row][i] != 0) {
-        board[row][i] = board[row][i] + board[row][i - 1];
-        board[row][i - 1] = 0;
-        j++;
+function resolveRowRight(board) {
+  for (var row = 0; row < board.length; row++) {
+    for (var j = 0; j < 3; j++) {
+      for (var i = 3; i > 0; i--) {
+        if (board[row][i] == 0) {
+          board[row][i] = board[row][i] + board[row][i - 1];
+          board[row][i - 1] = 0;
+        } else if (board[row][i] == board[row][i - 1] && board[row][i] != 0) {
+          board[row][i] = board[row][i] + board[row][i - 1];
+          board[row][i - 1] = 0;
+          j++;
+        }
       }
     }
   }
