@@ -1,4 +1,5 @@
 # 256! A 2048 Clone.
+![2048 clone](http://lab.joelrojo.com/images/2048.png)
 
 ## Learning Competencies
 
