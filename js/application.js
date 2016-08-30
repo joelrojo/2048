@@ -46,6 +46,7 @@ var render = function(game, animate=false) {
     }
   }
   $("#moves").html(game.moves);
+  $("#score").html(game.score);
   if (animate) {
     $('#game-table').animateCss('bounceIn');
   }

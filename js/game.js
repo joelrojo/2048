@@ -1,6 +1,7 @@
 var Game = function(boardString='0000000000000000') {
   this.board = generateNewBoard(boardString);
   this.moves = 0;
+  this.score = 0;
 
   this.toArray = function() {
     array = this.board[0].join(",") + "," + this.board[1].join(",") + "," + this.board[2].join(",") + "," + this.board[3].join(",");
@@ -14,19 +15,27 @@ var Game = function(boardString='0000000000000000') {
   this.move = function(direction) {
     switch (direction) {
       case "up":
-        this.board = resolveColUp(this.board);
+        resolved = resolveColUp(this.board)
+        this.board = resolved['board'];
+        this.score += resolved['score'];
         break;
 
       case "down":
-        this.board = resolveColDown(this.board);
+        resolved = resolveColDown(this.board)
+        this.board = resolved['board'];
+        this.score += resolved['score'];
         break;
 
       case "left":
-        this.board = resolveRowLeft(this.board);
+        resolved = resolveRowLeft(this.board)
+        this.board = resolved['board'];
+        this.score += resolved['score'];
         break;
 
       case "right":
-        this.board = resolveRowRight(this.board);
+        resolved = resolveRowRight(this.board)
+        this.board = resolved['board'];
+        this.score += resolved['score'];
         break;
     }
     this.board = spawnBlock(this.board)
@@ -70,6 +79,7 @@ function generateNewBoard(boardString) {
 }
 
 function resolveColUp(board) {
+  var score = 0;
   for (var col = 0; col < board.length; col++) { // run for each column
     for (var j = 0; j < 3; j++) { // run each column 3 times
       for (var i = 0; i < 3; i++) { // iterate through column
@@ -80,14 +90,17 @@ function resolveColUp(board) {
           board[i][col] = board[i][col] + board[i + 1][col];
           board[i + 1][col] = 0;
           j++;
+          score += parseInt(board[i][col]);
         }
       }
     }
   }
-  return board;
+  var resolved = { 'board': board, 'score': score }
+  return resolved;
 }
 
 function resolveColDown(board) {
+  var score = 0;
   for (var col = 0; col < board.length; col++) {
     for (var j = 0; j < 3; j++) { // 3 times per column
       for (var i = 3; i > 0; i--) { //iterate through column from bottom up
@@ -98,14 +111,17 @@ function resolveColDown(board) {
           board[i][col] = board[i][col] + board[i - 1][col];
           board[i - 1][col] = 0;
           j++;
+          score += parseInt(board[i][col]);
         }
       }
     }
   }
-  return board;
+  var resolved = { 'board': board, 'score': score }
+  return resolved;
 }
 
 function resolveRowLeft(board) {
+  var score = 0;
   for (var row = 0; row < board.length; row++) {
     for (var j = 0; j < 3; j++) {
       for (var i = 0; i < 3; i++) {
@@ -116,14 +132,17 @@ function resolveRowLeft(board) {
           board[row][i] = board[row][i] + board[row][i + 1];
           board[row][i + 1] = 0;
           j++;
+          score += parseInt(board[i][col]);
         }
       }
     }
   }
-  return board;
+  var resolved = { 'board': board, 'score': score }
+  return resolved;
 }
 
 function resolveRowRight(board) {
+  var score = 0;
   for (var row = 0; row < board.length; row++) {
     for (var j = 0; j < 3; j++) {
       for (var i = 3; i > 0; i--) {
@@ -134,9 +153,11 @@ function resolveRowRight(board) {
           board[row][i] = board[row][i] + board[row][i - 1];
           board[row][i - 1] = 0;
           j++;
+          score += parseInt(board[i][col]);
         }
       }
     }
   }
-  return board;
+  var resolved = { 'board': board, 'score': score }
+  return resolved;
 }
