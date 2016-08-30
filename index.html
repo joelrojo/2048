@@ -6,21 +6,43 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="css/normalize.css">
   <!--
     application.css is where you put your styles
   -->
-  <link rel="stylesheet" href="/css/application.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="css/application.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/mousetrap.js"></script>
-  <script src="/js/underscore.js"></script>
-  <script src="/js/game.js"></script>
-  <script src="/js/application.js"></script>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="js/mousetrap.js"></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/application.js"></script>
 
   <title>256!</title>
 </head>
 <body>
+  <h1>2048 Clone</h1>
+  <div class="controls">
+    <span class="label">Score: <span id="score">0</span></span>
+    <span class="label">Moves: <span id="moves">0</span></span>
+    <button id="restart"><i class="fa fa-times" aria-hidden="true"></i></button>
+  </div>
+  <div class="game-board">
+    <table id="game-table" class="slow">
+      <tr><td id="0"></td><td id='1'></td><td id='2'></td><td id='3'></td></tr>
+      <tr><td id="4"></td><td id='5'></td><td id='6'></td><td id='7'></td></tr>
+      <tr><td id="8"></td><td id='9'></td><td id='10'></td><td id='11'></td></tr>
+      <tr><td id="12"></td><td id='13'></td><td id='14'></td><td id='15'></td></tr>
+    </table>
+  </div>
+  <div class="controls">
+    <button id="auto" style="margin-right:5px;"><i class="fa fa-random" aria-hidden="true"></i></button>
+    <input id="amount" type="text" style="width:50px;float:right">
+  </div>
 
 </body>
 </html>

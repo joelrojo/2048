@@ -1,0 +1,127 @@
+body {
+  background: #faf8ef;
+  font-family: 'Source Code Pro', monospace;
+}
+
+h1, h2 {
+  text-align: center;
+  color:#666;
+}
+
+.controls {
+  margin: 0 auto;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 3px 10px;
+  text-decoration: none;
+  color: #f9f6f2;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  float: right;
+  border-style: none;
+}
+button:hover {
+  background: #bbada0;
+}
+button:focus { outline: none;}
+.label {
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.game-board {
+  margin: 0 auto;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  position: relative;
+  padding: 10px;
+  background: #bbada0;
+}
+
+td {
+  background: rgba(238, 228, 218, 0.35);
+  font-size: 1.5em;
+  width:30px;
+  height:30px;
+  color: #776e65;
+  border: solid 1px #bbada0;
+  border-radius: 5px;
+}
+
+[val~='0'] {
+  color: #cdc1b4;
+}
+[val~='2'] {
+  background: #eee4da;
+}
+[val~='4'] {
+  background: #ede0c8;
+}
+[val~='8'] {
+  color: #f9f6f2;
+  background: #f2b179; 
+}
+[val~='16'] {
+  color: #f9f6f2;
+  background: #f59563;
+}
+[val~='32'] {
+  color: #f9f6f2;
+  background: #f67c5f;
+}
+[val~='64'] {
+  color: #f9f6f2;
+  background: #f65e3b;
+}
+[val~='128'] {
+  color: #f9f6f2;
+  font-size:80%;
+  background: #edcf72;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286);
+}
+[val~='256'] {
+  color: #f9f6f2;
+  font-size:16px;
+  background: #edcc61;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+}
+[val~='512'] {
+  color: #f9f6f2;
+  font-size:16px;
+  background: #edc850;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.39683), inset 0 0 0 1px rgba(255, 255, 255, 0.2381);
+}
+[val~='1024'] {
+  color: #f9f6f2;
+  font-size:14px;
+  background: #edc53f;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.47619), inset 0 0 0 1px rgba(255, 255, 255, 0.28571);
+}
+[val~='2048'] {
+  color: #f9f6f2;
+  font-size:14px;
+  background: #edc22e;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
+}
+
+.animated.bounceIn {
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+}
+.animated.shake {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+}
