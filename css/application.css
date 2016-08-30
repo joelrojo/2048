@@ -61,6 +61,9 @@ td {
   border-radius: 5px;
 }
 
+[val~='0'] {
+  color: #cdc1b4;
+}
 [val~='2'] {
   background: #eee4da;
 }

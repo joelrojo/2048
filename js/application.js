@@ -24,30 +24,47 @@ $(document).ready(function() {
       case 37:
         game.move('left');
         populateLocalStorage(game);
+        render(localStorage);
         break;
 
       case 38:
         game.move('up');
         populateLocalStorage(game);
+        render(localStorage);
         break;
 
       case 39:
         game.move('right');
         populateLocalStorage(game);
+        render(localStorage);
         break;
 
       case 40:
         game.move('down');
         populateLocalStorage(game);
+        render(localStorage);
         break;
     }
-    render(localStorage);
   });
 
   $("#restart").click(function(event){
     game = new Game();
     populateLocalStorage(game);
     render(localStorage, true);
+  });
+
+  $("#auto").click(function(event){
+    var keyCodes = [37,38,39,40];
+    (function theLoop (i) {
+      setTimeout(function () {
+        var index = Math.floor(Math.random()*keyCodes.length);
+        var e = $.Event("keyup", {keyCode: keyCodes[index]});
+         $('html').trigger(e);
+        if (--i) {          // If i > 0, keep going
+          theLoop(i);       // Call the loop again, and pass it the current value of i
+        }
+      }, 300);
+    })(parseInt($("#amount").val()));
   });
 });
 
