@@ -57,7 +57,7 @@ td {
   width:30px;
   height:30px;
   color: #776e65;
-  border: solid 3px #bbada0;
+  border: solid 1px #bbada0;
 }
 
 [val~='2'] {
@@ -112,7 +112,7 @@ td {
   -webkit-animation-duration: .3s;
   animation-duration: .3s;
 }
-.animated.bounceIn.slow {
-  -webkit-animation-duration: 0.7s;
-  animation-duration: 0.7s;
+.animated.shake {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
 }

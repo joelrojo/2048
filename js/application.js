@@ -2,14 +2,13 @@ var game;
 $(document).ready(function() {
   game = new Game();
   render(game, true);
-  $('#game-table').animateCss('bounceIn');
   console.log(game.toString());
 
   $('html').on('keyup', function(event) {
     switch (event.keyCode) {
       case 27:
         game = new Game();
-        $('#game-table').animateCss('bounceIn');
+        render(game, true);
         break;
       case 37:
         game.move('left');
