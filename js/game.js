@@ -15,25 +15,27 @@ var Game = function(boardString='0000000000000000') {
   this.move = function(direction) {
     switch (direction) {
       case "up":
-        resolved = resolveColUp(this.board)
+        console.log("before calling up")
+        console.log(this.board.toString());
+        var resolved = resolveColUp(this.board)
         this.board = resolved['board'];
         this.score += resolved['score'];
         break;
 
       case "down":
-        resolved = resolveColDown(this.board)
+        var resolved = resolveColDown(this.board)
         this.board = resolved['board'];
         this.score += resolved['score'];
         break;
 
       case "left":
-        resolved = resolveRowLeft(this.board)
+        var resolved = resolveRowLeft(this.board)
         this.board = resolved['board'];
         this.score += resolved['score'];
         break;
 
       case "right":
-        resolved = resolveRowRight(this.board)
+        var resolved = resolveRowRight(this.board)
         this.board = resolved['board'];
         this.score += resolved['score'];
         break;
@@ -57,7 +59,6 @@ function spawnBlock(board, numBlocks=1) {
 }
 
 function generateNewBoard(boardString) {
-  console.log("generating board from string " + boardString)
   var board = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -72,13 +73,24 @@ function generateNewBoard(boardString) {
         count++;
       }
     }
+  } else if (boardString instanceof Array) {
+    console.log("array board")
+    board[0] = boardString.slice(0,4);
+    board[1] = boardString.slice(4,8)
+    board[2] = boardString.slice(8,12);
+    board[3] = boardString.slice(12,16);
+    
   } else {
     board = spawnBlock(board, 2);
-  } 
+  }
+  console.log("the board")
+  console.log(board)
   return board;
 }
 
 function resolveColUp(board) {
+  console.log("board up")
+  console.log(board.toString())
   var score = 0;
   for (var col = 0; col < board.length; col++) { // run for each column
     for (var j = 0; j < 3; j++) { // run each column 3 times

@@ -1,42 +1,58 @@
 var game;
 $(document).ready(function() {
-  game = new Game();
-  render(game, true);
+  if (!localStorage.length) {
+    console.log("no localstorage")
+    game = new Game();
+    populateLocalStorage(game);
+  } else {
+    console.log("local exists")
+    game = new Game(localStorage.board.split(","));
+    console.log(game);
+    game.moves = parseInt(localStorage.getItem('moves'));
+    game.score = parseInt(localStorage.getItem('score'));
+  }
+  render(localStorage, true);
   console.log(game.toString());
 
   $('html').on('keyup', function(event) {
     switch (event.keyCode) {
       case 27:
         game = new Game();
-        render(game, true);
+        populateLocalStorage(game);
+        render(localStorage, true);
         break;
       case 37:
         game.move('left');
+        populateLocalStorage(game);
         break;
 
       case 38:
         game.move('up');
+        populateLocalStorage(game);
         break;
 
       case 39:
         game.move('right');
+        populateLocalStorage(game);
         break;
 
       case 40:
         game.move('down');
+        populateLocalStorage(game);
         break;
     }
-    render(game);
+    render(localStorage);
   });
 
   $("#restart").click(function(event){
     game = new Game();
-    render(game, true);
+    populateLocalStorage(game);
+    render(localStorage, true);
   });
 });
 
-var render = function(game, animate=false) {
-  var array = game.toArray()
+var render = function(storage, animate=false) {
+  array = storage.board.split(",");
   for (var i = 0; i < 16; i++) {
     var block = $('#' + i);
     block.html(array[i]);
@@ -45,14 +61,18 @@ var render = function(game, animate=false) {
       block.animateCss('bounceIn');
     }
   }
-  $("#moves").html(game.moves);
-  $("#score").html(game.score);
+  $("#moves").html(storage.moves);
+  $("#score").html(storage.score);
   if (animate) {
     $('#game-table').animateCss('bounceIn');
   }
 } 
 
-
+function populateLocalStorage(game) {
+  localStorage.setItem('board', game.toArray().join(","));
+  localStorage.setItem('score', game.score);
+  localStorage.setItem('moves', game.moves);
+}
 
 // extending jQuery for animation
 $.fn.extend({
